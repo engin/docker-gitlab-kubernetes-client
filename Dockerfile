@@ -22,6 +22,10 @@ RUN \
   curl -Lo /bin/skaffold https://storage.googleapis.com/skaffold/releases/${SKAFFOLD_VERSION}/skaffold-linux-amd64
 RUN \
   curl -L https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz | tar zxv -C /bin --strip-components=1 linux-amd64/helm
+
+RUN \  
+  helm plugin install https://github.com/chartmuseum/helm-push.git
+  
 RUN \
   chmod +x /bin/kubectl /bin/helm /bin/kustomize
 
